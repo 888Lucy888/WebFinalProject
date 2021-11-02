@@ -69,6 +69,8 @@ _**Note:** The birthday will always be public, for reasons of reading the zodiac
 Information added that is public will be able to be viewed by all, while private info will only be accesible to
 the user.
 
+THe user will also ba able get info on their daily horoscope.
+
 ---
 
 ### Store
@@ -89,5 +91,5 @@ be able to discover them in the main page. They
 should be able to view their photos, bio, and
 birthday. Along with any public info they may have.
 
-The user will then be able to then send a match and
+The user will then be able to send a match and
 await for a response.
