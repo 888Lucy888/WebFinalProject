@@ -44,7 +44,7 @@ The main page for user settings, here the user will be able to change and update
 as well as checking their match history and purchases.
 
 Store:
-Here the user will be able to but clicks and suscriptions.
+Here the user will be able to buy clicks and subscriptions.
 
 Of course, their will be more subpages but these will be the main pages where the user will pass their time.
 
@@ -74,8 +74,8 @@ the user.
 
 The store is where we shall implement the buying options
 on the website. The user will be able to buy clicks,
-wether individually or in packs. We also intend to
-add a premium service and the user will be able to
+either individually or in packs. We also intend to
+add a premium service, so the user should be able to
 subscribe in one of several plans.
 
 ---
