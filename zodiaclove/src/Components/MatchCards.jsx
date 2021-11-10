@@ -6,7 +6,7 @@ const { Meta } = Card;
 
 
 function MatchCards(props){
-    const {img} = props;
+    const {img, zSign, name, desc} = props;
     return(
         <div>
             <Card
@@ -24,13 +24,11 @@ function MatchCards(props){
             ]}
             >
             <Meta
-            avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-            title="Card title"
-            description="This is the description"
+            avatar={<Avatar src={zSign} />}
+            title={name}
+            description={desc}
             />
-            </Card>,
-            mountNode,
-            );
+            </Card>
         </div>
     );
 }
