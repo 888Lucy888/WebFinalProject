@@ -1,7 +1,8 @@
 :root {
   --lightmain: #f8f0ff;
+  --main: #f1e4ff;
   --darkmain: #786094;
-  --lightcontrast: #92c5c1;
+  --lightcontrast: #a9dad5;
   --darkcontrast: #518a94;
   --mdc-theme-primary: #94608b !important;
 }

@@ -1,16 +1,16 @@
 import React from 'react';
 import { Card, Avatar } from 'antd';
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
+import { HeartTwoTone, CloseCircleTwoTone } from '@ant-design/icons';
 
 const { Meta } = Card;
-
 
 function MatchCards(props){
     const {img, zSign, name, desc} = props;
     return(
         <div>
             <Card
-            style={{ width: 300 }}
+            style={{ width: 300, backgroundColor: "#f1e4ff", border:0, color: "white"}}
+            bodyStyle={{backgroundColor: "#f1e4ff",border:0, color: "aliceblue"}}
             cover={
             <img
             alt="ProfilePic"
@@ -18,12 +18,12 @@ function MatchCards(props){
             />
             }
             actions={[
-            <SettingOutlined key="setting" />,
-            <EditOutlined key="edit" />,
-            <EllipsisOutlined key="ellipsis" />,
+            <HeartTwoTone key="add" twoToneColor="#954ce9" />,
+            <CloseCircleTwoTone key="del" twoToneColor="#56b9ca" />,
             ]}
             >
-            <Meta
+            <Meta   
+            style={{fontSize:14}}
             avatar={<Avatar src={zSign} />}
             title={name}
             description={desc}
