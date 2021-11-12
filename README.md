@@ -93,3 +93,8 @@ birthday. Along with any public info they may have.
 
 The user will then be able to send a match and
 await for a response.
+
+---
+
+#### Resources
+[Compatibility Info](https://www.instyle.com/lifestyle/astrology/)
