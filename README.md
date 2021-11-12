@@ -25,7 +25,7 @@ potential partners based on their zodiac signs.
 - HTML
 - CSS
 - React
-- Ant Design (React Framework)
+- [Ant Design (React Framework)](https://www.instyle.com/lifestyle/astrology/)
 - Node.js
 - MongoDB
 - Express Server
