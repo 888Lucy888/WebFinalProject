@@ -97,4 +97,4 @@ await for a response.
 ---
 
 #### Resources
-[Compatibility Info](https://www.instyle.com/lifestyle/astrology/)
+[Compatibility Info](https://www.astrology.com/love/compatibility)
