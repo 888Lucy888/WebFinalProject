@@ -47,8 +47,6 @@ export default class CreateUser extends Component {
   }
 
   onSubmit(e) {
-    e.preventDefault();
-
     const newUser = {
       person_name: this.state.person_name,
       person_last_name: this.state.person_last_name,
@@ -56,9 +54,18 @@ export default class CreateUser extends Component {
       person_password: this.state.person_password,
     };
 
-    axios.post("http:/localhost:3000/user/add", newUser).then((res) => {
-      console.log(res);
-    });
+    //Up to here everything works fine
+    //There is a problem when making the POST
+    //Check that
+
+    /* --Checks that the values are stored correctly
+    console.log(newUser.person_name);
+    console.log(newUser.person_last_name);
+    console.log(newUser.person_email);*/
+
+    //axios.post("http:/localhost:3000/user/add", newUser).then((res) => {
+    //  console.log(res.data);
+    //});
 
     this.setState = {
       person_name: "",
@@ -71,13 +78,7 @@ export default class CreateUser extends Component {
   render() {
     return (
       <div>
-        <Form
-          name="basic"
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 16 }}
-          onFinish={this.onSubmit}
-          onFinishFailed={console.error(`Failed submitting data`)}
-        >
+        <Form name="basic" onFinish={this.onSubmit}>
           <Form.Item label="e-Mail" name="email">
             <Input
               value={this.state.person_email}
@@ -103,11 +104,7 @@ export default class CreateUser extends Component {
             />
           </Form.Item>
           <Form.Item>
-            <Button
-              type="submit"
-              htmlType="submit"
-              wrapperCol={{ span: 16, offset: 8 }}
-            >
+            <Button type="submit" htmlType="submit">
               Submit
             </Button>
           </Form.Item>
