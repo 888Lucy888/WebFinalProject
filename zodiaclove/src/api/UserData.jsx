@@ -58,12 +58,14 @@ export default class CreateUser extends Component {
     //There is a problem when making the POST
     //Check that
 
+    axios.post("http://localhost:3000/users/add", newUser);
+
     /* --Checks that the values are stored correctly
     console.log(newUser.person_name);
     console.log(newUser.person_last_name);
     console.log(newUser.person_email);*/
 
-    //axios.post("http:/localhost:3000/user/add", newUser).then((res) => {
+    //axios.post("http:/localhost:3000/", newUser).then((res) => {
     //  console.log(res.data);
     //});
 
