@@ -7,12 +7,12 @@ import data from "../ZodiacInfo/Compatibility.json"
 const gridStyle = {
   width: '25%',
   textAlign: 'center',
-  background: "#786094"
+  background: "#0c0c21"
 };
 
 const chartStyle = {
-    background: "#786094",
-    color: "aliceblue",
+    background: "#4e4587",
+    color: "white",
 };
 
 const imgStyle = {
@@ -23,7 +23,7 @@ const imgStyle = {
 function CompatGrid(props){
     const {zSign} = props;
     return(  
-    <Card title="Compatibility Chart" style={chartStyle}>
+    <Card title={<p style={{color: "white"}}>Compatibility Chart</p>} style={chartStyle}>
         {data[zSign].map((sign) => (
         <Popover content={
             <CompatCard caption={sign.caption} current={sign.current} match={sign.match} desc={sign.desc} img={"./zodiacImgs/"+sign.match+".jpg"}/>

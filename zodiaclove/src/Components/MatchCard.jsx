@@ -9,8 +9,8 @@ function MatchCard(props){
     return(
         <div>
             <Card
-                style={{ width: 300, backgroundColor: "#f1e4ff", border:0, color: "white"}}
-                bodyStyle={{backgroundColor: "#f1e4ff",border:0, color: "aliceblue"}}
+                style={{ width: 300, backgroundColor: "#edeaff", border:0, color: "white"}}
+                bodyStyle={{backgroundColor: "#edeaff",border:0, color: "aliceblue"}}
                 cover={
                     <img alt="ProfilePic" src={img}/>
                 }
