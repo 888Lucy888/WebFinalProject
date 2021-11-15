@@ -56,7 +56,8 @@ Of course, their will be more subpages but these will be the main pages where th
 The user will be able to add personal information to their profile, both public and private.
 The information added will include:
 
-- Gender
+- Name
+- Email
 - Age
 - Birthday
 - Profession
