@@ -1,10 +1,17 @@
 import React from 'react';
 import CompatCard from './CompatibilityCard';
 import { Card, Popover, Button } from 'antd';
+import data from "../ZodiacInfo/Compatibility.json"
 
 const gridStyle = {
   width: '25%',
   textAlign: 'center',
+  background: "#786094"
+};
+
+const chartStyle = {
+    background: "#786094",
+    color: "aliceblue",
 };
 
 const imgStyle = {
@@ -13,20 +20,19 @@ const imgStyle = {
 };
 
 function CompatGrid(props){
-    const {zSign1, zSign2, img, desc} = props;
-
+    const {zSign} = props;
     return(  
-    <Card title="Compatibility Chart">
-        <Popover content={"Hi"} title="Title" trigger="hover">
+    <Card title="Compatibility Chart" style={chartStyle}>
+        {data[zSign].map((sign) => (
+        <Popover content={
+            <CompatCard caption={sign.caption} current={sign.current} match={sign.match} desc={sign.desc} img={"./zodiacImgs/"+sign.current+".jpg"}/>
+        } trigger="hover">
             <Card.Grid style={gridStyle}>
-                <img style={imgStyle} src={img} alt="signImg"/> 
+                <img style={imgStyle} src={"./zodiacImgs/"+sign.match+".jpg"} alt="signImg"/> 
+                <p style={chartStyle}>{sign.match}</p>
             </Card.Grid>
         </Popover>
-        <Popover content={"Hi"} title="Title" trigger="hover">
-            <Card.Grid style={gridStyle}>
-                <img style={imgStyle} src={img} alt="signImg"/> 
-            </Card.Grid>
-        </Popover>
+        ))}
     </Card>
     );
 }

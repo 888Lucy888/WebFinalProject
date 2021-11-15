@@ -4,7 +4,7 @@ import { Card, Avatar } from 'antd';
 const { Meta } = Card;
 
 function CompatCard(props){
-    const {zSign1, zSign2, img, desc} = props;
+    const {caption, img, desc, match, current} = props;
     return(
         <div>
             <Card
@@ -16,8 +16,12 @@ function CompatCard(props){
             >
             <Meta   
                 style={{fontSize:14}}
-                title={zSign1 + " and " + zSign2}
-                description={desc}
+                title={current + " and " + match}
+                description={<div>
+                <p style={{fontSize:16, color:"#94608b"}}>{caption}</p><p style={{color:"#786094"}}>{desc}</p>
+                </div>
+                }
+
             />
             </Card>
         </div>
