@@ -3,6 +3,7 @@ import CompatCard from './CompatibilityCard';
 import { Card, Popover, Button } from 'antd';
 import data from "../ZodiacInfo/Compatibility.json"
 
+
 const gridStyle = {
   width: '25%',
   textAlign: 'center',
@@ -25,11 +26,11 @@ function CompatGrid(props){
     <Card title="Compatibility Chart" style={chartStyle}>
         {data[zSign].map((sign) => (
         <Popover content={
-            <CompatCard caption={sign.caption} current={sign.current} match={sign.match} desc={sign.desc} img={"./zodiacImgs/"+sign.current+".jpg"}/>
+            <CompatCard caption={sign.caption} current={sign.current} match={sign.match} desc={sign.desc} img={"./zodiacImgs/"+sign.match+".jpg"}/>
         } trigger="hover">
             <Card.Grid style={gridStyle}>
                 <img style={imgStyle} src={"./zodiacImgs/"+sign.match+".jpg"} alt="signImg"/> 
-                <p style={chartStyle}>{sign.match}</p>
+                <p style={{fontSizeAdjust:"inherit"}}>{sign.match}</p>
             </Card.Grid>
         </Popover>
         ))}
