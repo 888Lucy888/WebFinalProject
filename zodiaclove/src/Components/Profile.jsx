@@ -51,6 +51,7 @@ export default function ProfileView(props) {
 
   return (
     <div>
+      <img src={props.img} alt="Profile pic" />
       <h1>{`${props.name} ${props.last_name}`}</h1>
       <div>
         <div>{sign}</div>
