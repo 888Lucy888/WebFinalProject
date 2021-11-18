@@ -25,7 +25,7 @@ potential partners based on their zodiac signs.
 - HTML
 - CSS
 - React
-- Ant Design (React Framework)
+- [Ant Design (React Framework)](https://ant.design/)
 - Node.js
 - MongoDB
 - Express Server
@@ -56,7 +56,8 @@ Of course, their will be more subpages but these will be the main pages where th
 The user will be able to add personal information to their profile, both public and private.
 The information added will include:
 
-- Gender
+- Name
+- Email
 - Age
 - Birthday
 - Profession
@@ -69,7 +70,7 @@ _**Note:** The birthday will always be public, for reasons of reading the zodiac
 Information added that is public will be able to be viewed by all, while private info will only be accesible to
 the user.
 
-THe user will also ba able get info on their daily horoscope.
+The user will also ba able get info on their daily horoscope.
 
 ---
 
@@ -93,3 +94,8 @@ birthday. Along with any public info they may have.
 
 The user will then be able to send a match and
 await for a response.
+
+---
+
+#### Resources
+[Compatibility Info](https://www.astrology.com/love/compatibility)
