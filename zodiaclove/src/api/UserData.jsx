@@ -4,6 +4,8 @@ import axios from "axios";
 //import { Form, Input, Button, Checkbox } from "antd";
 import { Form, Button, Input } from "antd";
 
+import { Menu } from "antd";
+
 export default class CreateUser extends Component {
   constructor(props) {
     super(props);

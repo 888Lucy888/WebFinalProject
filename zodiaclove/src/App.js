@@ -1,7 +1,7 @@
 import "./App.css";
 import UserData from "./api/UserData";
 
-import { Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 
 function Header() {
   return (
@@ -12,7 +12,12 @@ function Header() {
 }
 
 function Hello() {
-  return <h1>Hello</h1>;
+  return (
+    <div>
+      <h1>Hello</h1>
+      <Link to="/users/signup">Go to about</Link>
+    </div>
+  );
 }
 
 function App() {
@@ -20,8 +25,8 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<Hello />} />
-        <Route path="/signup" element={<UserData />} />
+        <Route exact path="/" element={<Hello />} />
+        <Route path="/users/signup" element={<UserData />} />
       </Routes>
     </div>
   );
