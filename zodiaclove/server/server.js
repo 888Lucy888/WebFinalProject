@@ -26,3 +26,7 @@ database.once("open", () => {
 app.listen(port, () => {
   console.log(`Connection at port ${port}`);
 });
+
+const UserRoute = require("./routes/User");
+
+app.use("/users", UserRoute);
