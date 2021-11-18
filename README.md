@@ -25,7 +25,7 @@ potential partners based on their zodiac signs.
 - HTML
 - CSS
 - React
-- [Ant Design (React Framework)](https://www.instyle.com/lifestyle/astrology/)
+- [Ant Design (React Framework)](https://ant.design/)
 - Node.js
 - MongoDB
 - Express Server
@@ -70,7 +70,7 @@ _**Note:** The birthday will always be public, for reasons of reading the zodiac
 Information added that is public will be able to be viewed by all, while private info will only be accesible to
 the user.
 
-THe user will also ba able get info on their daily horoscope.
+The user will also ba able get info on their daily horoscope.
 
 ---
 
