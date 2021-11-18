@@ -1,28 +1,28 @@
-const { MongoClient } = require("mongodb");
-const uri =
-  "mongodb+srv://zodiacAdmin:<4bwMKcmbZSRUi6r>@cluster0.zd46e.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const mongoose = require("mongoose");
 
-const DB = process.env.uri;
-
-const client = new MongoClient(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+mongoose.connect(process.env.ATLAS_URI, {
+  useNewURLParser: true,
+  useCreateIndex: true,
 });
 
-var _db;
+const database = mongoose.connection;
 
-module.exports = {
-  connectToServer: function (callback) {
-    client.connect(function (err, database) {
-      if (database) {
-        _db = database.db("myFirstDatabase");
-        console.log(`Succesful connection to mongoDB`);
-      }
-      return callback(err);
-    });
-  },
+database.on("error", (error) => {
+  console.error(error);
+});
 
-  getDatabase: function () {
-    return _db;
-  },
-};
+database.once("open", () => {
+  console.log("success");
+});
+
+const User = new mongoose.Schema({
+  name: String,
+  last_name: String,
+  password: String,
+  email: String,
+  birth: Date,
+  sign: String,
+  hobbies: Array,
+});
+
+export default User;

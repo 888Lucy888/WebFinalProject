@@ -3,15 +3,26 @@ const app = express();
 const cors = require("cors");
 require("dotenv").config({ path: "./config.env" });
 const port = process.env.PORT || 3000;
+const mongoose = require("mongoose");
 
 app.use(cors());
 app.use(express.json());
 
-const dbo = require("./database/connection");
+mongoose.connect(process.env.ATLAS_URI, {
+  useNewURLParser: true,
+  useCreateIndex: true,
+});
+
+const database = mongoose.connection;
+
+database.on("error", (error) => {
+  console.error(error);
+});
+
+database.once("open", () => {
+  console.log("success");
+});
 
 app.listen(port, () => {
-  dbo.connectToServer(function (err) {
-    if (err) console.error(err);
-  });
   console.log(`Connection at port ${port}`);
 });
