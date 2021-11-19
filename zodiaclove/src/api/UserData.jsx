@@ -60,7 +60,7 @@ export default class CreateUser extends Component {
     //There is a problem when making the POST
     //Check that
 
-    axios.post("http://localhost:3000/signup/", newUser);
+    //axios.post("http://localhost:3000/users/signup/", newUser);
 
     /* --Checks that the values are stored correctly
     console.log(newUser.person_name);
@@ -82,7 +82,7 @@ export default class CreateUser extends Component {
   render() {
     return (
       <div>
-        <Form name="basic" onFinish={this.onSubmit}>
+        <Form name="basic" onFinish={this.onSubmit} method="POST">
           <Form.Item label="e-Mail" name="email">
             <Input
               value={this.state.person_email}

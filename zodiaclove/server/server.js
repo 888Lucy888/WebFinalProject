@@ -10,7 +10,6 @@ app.use(express.json());
 
 mongoose.connect(process.env.ATLAS_URI, {
   useNewURLParser: true,
-  useCreateIndex: true,
 });
 
 const database = mongoose.connection;

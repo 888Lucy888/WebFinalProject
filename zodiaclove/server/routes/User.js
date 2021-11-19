@@ -9,6 +9,8 @@ router.route("/").get((req, res) => {
 });
 
 router.route("/signup").post((req, res) => {
+  console.log("Entered signup post");
+
   const name = req.body.name;
   const last_name = req.body.last_name;
   const newEmail = req.body.email;
