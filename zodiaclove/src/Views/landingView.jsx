@@ -3,12 +3,12 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 
 const siderStyle = {
-    backgroundColor:"#94608b",
+    backgroundColor:"#423a76",
     height: "200px",
     marginTop:"5px",
     textAlign:"center",
     padding:"auto",
-    color:"#f1e4ff",
+    color:"#f0f2ff",
 };
 
 class LandingView extends Component {
