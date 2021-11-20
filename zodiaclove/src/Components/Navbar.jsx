@@ -47,13 +47,16 @@ class Navbar extends Component {
           disabled
           style={{ width: "20%", textAlign: "center" }}
         >
-          <img src={logo} alt="imagen" style={{ width: "100%" }}></img>
+          <img src={logo} alt="imagen" style={{ width: "50%" }}></img>
         </Menu.Item>
         <Menu.Item
           key="matches"
           icon={<HeartOutlined />}
           style={{ width: "20%", textAlign: "center", padding: "25px" }}
         >
+            <a href="../matches" rel="noopener noreferrer">
+            {" "}
+          </a>
           Your matches
         </Menu.Item>
         <Menu.Item
@@ -61,13 +64,9 @@ class Navbar extends Component {
           icon={<UserOutlined />}
           style={{ width: "20%", textAlign: "center", padding: "25px" }}
         >
-          <a
-            href="https://ant.design"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {" "}
-          </a>
+          <a href="../profile" rel="noopener noreferrer">
+          {" "}
+        </a>
         </Menu.Item>
       </Menu>
     );
