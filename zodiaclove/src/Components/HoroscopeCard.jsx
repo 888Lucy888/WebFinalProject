@@ -22,12 +22,14 @@ const { SubMenu } = Menu;
 
 class HoroscopeCard extends Component {
     state = {
-        sign: "virgo",
+        sign: this.props.sign,
         image: "",
+        horoscope: "",
       };
 
       async componentDidMount(){
           await this.getSignImage();
+          await this.getHoroscope();
       }
 
       getSignImage = async() => {
@@ -72,6 +74,16 @@ class HoroscopeCard extends Component {
                 break;
         }
       }
+
+      getHoroscope = async () => {
+        await axios
+        .get("https://api.adderou.cl/tyaas/")
+        .then((res) => {
+            //const { results } = res.data;
+            console.log(res.data.horoscopo)
+            this.setState({horoscope: res.data.horoscopo})
+      });
+    }
     
       render() {
         return (
