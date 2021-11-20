@@ -5,13 +5,13 @@ import CompatGrid from './Components/CompatibilityGrid';
 
 import UserData from "./api/UserData";
 import Navbar from "./Components/Navbar";
-import HoroscopeCard from "./Components/HoroscopeCard";
 import Store from "./Components/store";
 import HoroscopeView from "./Views/horoscopeView";
 import MatchesView from "./Views/matchesView";
 import ProfileView from "./Views/ProfileView";
+import LandingView from "./Views/landingView";
 
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 function Header() {
   return (
@@ -21,27 +21,14 @@ function Header() {
   );
 }
 
-function Hello() {
-  return (
-    <div>
-      <h1>Hello</h1>
-      <Link to="/users/signup">Go to about</Link>
-    </div>
-  );
-}
-
 function App() {
   let sign = "sagittarius";
   console.log("sign", sign)
   return (
     <div className="App">
-      <header className="App-header">
-        <MatchCards name="L" desc="Hello my name is L" zSign="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" img="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"/>
-        <CompatGrid zSign="aries"/>
-      </header>
       <Navbar></Navbar>
       <Routes>
-        <Route exact path="/" element={<Hello />} />
+        <Route exact path="/" element={<LandingView />} />
         <Route path="/users/signup" element={<UserData />} />
         <Route path="/store" element={<Store />} />
         <Route path="/horoscope" element={<HoroscopeView sign= {sign}/>} />
