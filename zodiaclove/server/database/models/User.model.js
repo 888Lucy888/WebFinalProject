@@ -11,9 +11,9 @@ const UserSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  hobbies: Array,
-  //birth: { type: String, required: true },
-  //sign: { type: String, required: true },
+  hobbies: String,
+  birth: { type: Date, required: true },
+  sign: { type: String, required: true },
 });
 
 const User = mongoose.model("User", UserSchema);

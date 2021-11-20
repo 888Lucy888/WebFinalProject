@@ -140,6 +140,10 @@ export default class CreateUser extends Component {
             <Input.TextArea showCount maxLength={600} />
           </Form.Item>
 
+          <Form.Item name="hobbies" label="Hobbies">
+            <Input.TextArea showCount maxLength={600} />
+          </Form.Item>
+
           <Form.Item name="gender" label="Gender">
             <Radio.Group>
               <Radio value="Male">He/him</Radio>

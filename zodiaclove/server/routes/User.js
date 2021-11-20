@@ -15,8 +15,8 @@ router.route("/signup").post((req, res) => {
   const last_name = req.body.last_name;
   const newEmail = req.body.email;
   const newPassword = req.body.password;
-  const hobbies = [""];
-  const birth = "";
+  const hobbies = req.body.hobbies;
+  const birth = req.body.bd;
   const sign = "";
 
   const newUser = new UserModel({
