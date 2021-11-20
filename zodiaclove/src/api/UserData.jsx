@@ -4,7 +4,7 @@ import axios from "axios";
 //import { Form, Input, Button, Checkbox } from "antd";
 import { Form, Button, Input } from "antd";
 
-import { Menu } from "antd";
+import { DatePicker, Radio } from "antd";
 
 export default class CreateUser extends Component {
   constructor(props) {
@@ -82,31 +82,72 @@ export default class CreateUser extends Component {
   render() {
     return (
       <div>
-        <Form name="basic" onFinish={this.onSubmit} method="POST">
+        <Form
+          name="complex-form"
+          onFinish={this.onSubmit}
+          method="POST"
+          labelCol={{ span: 8 }}
+          wrapperCol={{ span: 12 }}
+        >
           <Form.Item label="e-Mail" name="email">
             <Input
               value={this.state.person_email}
               onChange={this.onChangePersonEmail}
+              rules={[{ required: true }]}
             />
           </Form.Item>
-          <Form.Item label="First Name" name="fname">
-            <Input
-              value={this.state.person_name}
-              onChange={this.onChangePersonName}
-            />
-          </Form.Item>
-          <Form.Item label="Last Name" name="lname">
-            <Input
-              value={this.state.person_last_name}
-              onChange={this.onChangePersonLastName}
-            />
+          <Form.Item
+            label="Your Name"
+            name="name"
+            style={{ marginBottom: 0, display: "flex", flexDirection: "row" }}
+          >
+            <Input.Group>
+              <Form.Item name="fname">
+                <Input
+                  value={this.state.person_name}
+                  onChange={this.onChangePersonName}
+                  style={{ width: "calc(50% - 8px)" }}
+                  placeholder="First Name"
+                  rules={[{ required: true }]}
+                />
+              </Form.Item>
+              <Form.Item name="lname">
+                <Input
+                  value={this.state.person_last_name}
+                  onChange={this.onChangePersonLastName}
+                  style={{ width: "calc(50% - 8px)" }}
+                  rules={[{ required: true }]}
+                  placeholder="Last Name"
+                />
+              </Form.Item>
+            </Input.Group>
           </Form.Item>
           <Form.Item label="Password" name="password">
             <Input.Password
               value={this.state.person_password}
               onChange={this.onChangePersonPassword}
+              rules={[{ required: true }]}
             />
           </Form.Item>
+          <Form.Item
+            label="Date of Birth"
+            name="bd"
+            rules={[{ required: true }]}
+          >
+            <DatePicker />
+          </Form.Item>
+          <Form.Item name="bio" label="Bio">
+            <Input.TextArea showCount maxLength={600} />
+          </Form.Item>
+
+          <Form.Item name="gender" label="Gender">
+            <Radio.Group>
+              <Radio value="Male">He/him</Radio>
+              <Radio value="Female">She/her</Radio>
+              <Radio value="Other">Other</Radio>
+            </Radio.Group>
+          </Form.Item>
+
           <Form.Item>
             <Button type="submit" htmlType="submit">
               Submit
@@ -117,48 +158,3 @@ export default class CreateUser extends Component {
     );
   }
 }
-
-/*export default function UserData() {
-  const submitData = function (values) {
-    console.log(values);
-  };
-
-  const printError = function () {
-    console.log("Got an error");
-  };
-
-  return (
-    <div>
-      <Form
-        name="basic"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
-        onFinish={submitData}
-        onFinishFailed={printError}
-      >
-        <Form.Item label="e-Mail" name="email">
-          <Input />
-        </Form.Item>
-        <Form.Item label="First Name" name="fname">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Last Name" name="lname">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Password" name="password">
-          <Input.Password />
-        </Form.Item>
-        <Form.Item>
-          <Button
-            type="submit"
-            htmlType="submit"
-            wrapperCol={{ span: 16, offset: 8 }}
-          >
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
-    </div>
-  );
-}
-*/
