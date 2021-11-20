@@ -21,11 +21,11 @@ class Navbar extends Component {
 
   render() {
     return (
-      <Menu onClick={this.handleClick} mode="horizontal">
+      <Menu onClick={this.handleClick} style={{background:"#4e4587"}} mode="horizontal">
         <Menu.Item
           key="store"
           icon={<ShoppingOutlined />}
-          style={{ width: "18%", textAlign: "center", padding: "25px" }}
+          style={{ width: "18%", textAlign: "center", padding: "20px", color:"#f8f0ff" }}
         >
         <a href="./store" rel="noopener noreferrer">
             {" "}
@@ -35,34 +35,34 @@ class Navbar extends Component {
         <Menu.Item
           key="horoscope"
           icon={<FireOutlined />}
-          style={{ width: "20%", textAlign: "center", padding: "25px" }}
+          style={{ width: "20%", textAlign: "center", padding: "20px", color:"#f8f0ff" }}
         >
           <a href="../horoscope" rel="noopener noreferrer">
             {" "}
           </a>
-          Your Horoscope
+          Horoscope
         </Menu.Item>
         <Menu.Item
           key="logo"
           disabled
-          style={{ width: "20%", textAlign: "center" }}
+          style={{ width: "20%", textAlign: "center", color:"#f8f0ff", padding:"auto" }}
         >
           <img src={logo} alt="imagen" style={{ width: "50%" }}></img>
         </Menu.Item>
         <Menu.Item
           key="matches"
           icon={<HeartOutlined />}
-          style={{ width: "20%", textAlign: "center", padding: "25px" }}
+          style={{ width: "20%", textAlign: "center", padding: "20px", color:"#f8f0ff"}}
         >
             <a href="../matches" rel="noopener noreferrer">
             {" "}
           </a>
-          Your matches
+          Matches
         </Menu.Item>
         <Menu.Item
           key="profile"
           icon={<UserOutlined />}
-          style={{ width: "20%", textAlign: "center", padding: "25px" }}
+          style={{ width: "20%", textAlign: "end", padding: "20px", color:"#f8f0ff"  }}
         >
           <a href="../profile" rel="noopener noreferrer">
           {" "}
