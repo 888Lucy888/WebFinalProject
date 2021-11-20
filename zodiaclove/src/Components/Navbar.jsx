@@ -27,6 +27,9 @@ class Navbar extends Component {
           icon={<ShoppingOutlined />}
           style={{ width: "18%", textAlign: "center", padding: "25px" }}
         >
+        <a href="./store" rel="noopener noreferrer">
+            {" "}
+          </a>
           Store
         </Menu.Item>
         <Menu.Item
@@ -34,7 +37,7 @@ class Navbar extends Component {
           icon={<FireOutlined />}
           style={{ width: "20%", textAlign: "center", padding: "25px" }}
         >
-          <a href="../Views/horoscopeView" rel="noopener noreferrer">
+          <a href="../horoscope" rel="noopener noreferrer">
             {" "}
           </a>
           Your Horoscope

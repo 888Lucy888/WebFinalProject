@@ -1,15 +1,21 @@
-import "./App.css";
+//import "./App.css";
 import 'antd/dist/antd.css';
 
-import UserData from "./api/UserData";
-import Navbar from "./Components/Navbar";
+import React, { Component } from "react"; 
 
-function HoroscopeView() {
-  return (
-    <div className="HoroscopeView">
-      <h1>Funciona</h1>
-    </div>
-  );
+//import UserData from "./api/UserData";
+import ProfileCards from "../Components/ProfileCards";
+
+class HoroscopeView extends Component {
+  state = {};
+
+  async componentDidMount() {}
+
+  render() {
+    return (
+      <ProfileCards></ProfileCards>
+    );
+  }
 }
 
 export default HoroscopeView;

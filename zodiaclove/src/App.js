@@ -5,6 +5,7 @@ import UserData from "./api/UserData";
 import Navbar from "./Components/Navbar";
 import HoroscopeCard from "./Components/HoroscopeCard";
 import Store from "./Components/store";
+import HoroscopeView from "./Views/horoscopeView";
 
 import { Link, Route, Routes } from "react-router-dom";
 
@@ -29,10 +30,11 @@ function App() {
   return (
     <div className="App">
       <Navbar></Navbar>
-      <Store></Store>
       <Routes>
         <Route exact path="/" element={<Hello />} />
         <Route path="/users/signup" element={<UserData />} />
+        <Route path="/store" element={<Store />} />
+        <Route path="/horoscope" element={<HoroscopeView />} />
       </Routes>
     </div>
   );
