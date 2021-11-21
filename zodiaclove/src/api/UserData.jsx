@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 
 //import { Form, Input, Button, Checkbox } from "antd";
 import { Form, Button, Input } from "antd";
@@ -49,28 +48,6 @@ export default class CreateUser extends Component {
   }
 
   onSubmit(e) {
-    const newUser = {
-      person_name: this.state.person_name,
-      person_last_name: this.state.person_last_name,
-      person_email: this.state.person_email,
-      person_password: this.state.person_password,
-    };
-
-    //Up to here everything works fine
-    //There is a problem when making the POST
-    //Check that
-
-    //axios.post("http://localhost:3000/users/signup/", newUser);
-
-    /* --Checks that the values are stored correctly
-    console.log(newUser.person_name);
-    console.log(newUser.person_last_name);
-    console.log(newUser.person_email);*/
-
-    //axios.post("http:/localhost:3000/", newUser).then((res) => {
-    //  console.log(res.data);
-    //});
-
     this.setState = {
       person_name: "",
       person_last_name: "",

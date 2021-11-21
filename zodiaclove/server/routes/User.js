@@ -73,14 +73,14 @@ router.route("/signup").post((req, res) => {
   const sign = getSign(birth);
 
   const newUser = new UserModel({
-    name,
-    last_name,
-    newPassword,
-    newEmail,
-    hobbies,
-    birth,
-    sign,
-    gender,
+    name: name,
+    last_name: last_name,
+    password: newPassword,
+    email: newEmail,
+    hobbies: hobbies,
+    birth: birth,
+    sign: sign,
+    gender: gender,
   });
 
   newUser
@@ -89,25 +89,25 @@ router.route("/signup").post((req, res) => {
     .catch((err) => res.status(400).json("Error " + err));
 });
 
-router.route("/match").delete((req, res) => {
-  const mail1 = req.params.mailOne;
+router.route("/match").post((req, res) => {
+  const mail2 = req.params.mailTwo;
 
   var mailto = {
     from: process.env.EMAIL,
-    to: mail1,
-    subject: "You were rejected </3",
-    text: "You rmatch was denied",
+    to: mail2,
+    subject: "You have a potential match!",
+    text: `User ${req.params.mailOne} would like to match with you!`,
   };
 
   mailClient.sendMail(mailto, (err, inf) => {
     if (err) {
       console.error(err);
     } else {
-      console.log(`Email sent to ${mail1}`);
+      console.log(`Email sent to ${mail2}`);
     }
   });
 
-  //TODO remove the match from the database
+  //TODO add match to potential
 });
 
 module.exports = router;

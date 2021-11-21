@@ -13,9 +13,9 @@ const UserSchema = new mongoose.Schema({
   birth: { type: Date, required: true },
   sign: { type: String, required: true },
   gender: String,
-  matches: Array,
-  potentialMatches: Array,
-  rejectedPeople: Array,
+  matches: [String],
+  potentialMatches: [String],
+  rejectedPeople: [String],
 });
 
 const User = mongoose.model("User", UserSchema);
