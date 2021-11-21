@@ -15,6 +15,7 @@ const UserSchema = new mongoose.Schema({
   birth: { type: Date, required: true },
   sign: { type: String, required: true },
   gender: String,
+  matches: Array,
 });
 
 const User = mongoose.model("User", UserSchema);
