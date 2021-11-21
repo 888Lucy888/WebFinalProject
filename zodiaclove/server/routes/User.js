@@ -1,45 +1,54 @@
 const router = require("express").Router();
+const mailer = require("nodemailer");
+
+const mailClient = mailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.EPASS,
+  },
+});
 
 let UserModel = require("../database/models/User.model");
 
 function getSign(date) {
-  month = date.getMonth();
-  day = date.getDay();
+  const month = date.getMonth();
+  const day = date.getDay();
 
-  if (month == 1) {
+  if (month === 1) {
     if (day <= 19) return "Capricorn";
     else return "Aquarius";
-  } else if (month == 2) {
+  } else if (month === 2) {
     if (day <= 18) return "Aquarius";
     else return "Pisces";
-  } else if (month == 3) {
+  } else if (month === 3) {
     if (day <= 20) return "Pisces";
     else return "Aries";
-  } else if (month == 4) {
+  } else if (month === 4) {
     if (day <= 19) return "Aries";
     else return "Taurus";
-  } else if (month == 5) {
+  } else if (month === 5) {
     if (day <= 20) return "Taurus";
     else return "Gemini";
-  } else if (month == 6) {
+  } else if (month === 6) {
     if (day <= 20) return "Gemini";
     else return "Cancer";
-  } else if (month == 7) {
+  } else if (month === 7) {
     if (day <= 22) return "Cancer";
     else return "Leo";
-  } else if (month == 8) {
+  } else if (month === 8) {
     if (day <= 22) return "Leo";
     else return "Virgo";
-  } else if (month == 9) {
+  } else if (month === 9) {
     if (day <= 22) return "Virgo";
     else return "Libra";
-  } else if (month == 10) {
+  } else if (month === 10) {
     if (day <= 22) return "Libra";
     else return "Scorpio";
-  } else if (month == 11) {
+  } else if (month === 11) {
     if (day <= 21) return "Scorpio";
     else return "Sagittarius";
-  } else if (month == 12) {
+  } else if (month === 12) {
     if (day <= 22) return "Sagittarius";
     else return "Capricorn";
   }
@@ -78,6 +87,27 @@ router.route("/signup").post((req, res) => {
     .save()
     .then(() => res.json("User added"))
     .catch((err) => res.status(400).json("Error " + err));
+});
+
+router.route("/match").delete((req, res) => {
+  const mail1 = req.params.mailOne;
+
+  var mailto = {
+    from: process.env.EMAIL,
+    to: mail1,
+    subject: "You were rejected </3",
+    text: "You rmatch was denied",
+  };
+
+  mailClient.sendMail(mailto, (err, inf) => {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log(`Email sent to ${mail1}`);
+    }
+  });
+
+  //TODO remove the match from the database
 });
 
 module.exports = router;

@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema();
-
 const UserSchema = new mongoose.Schema({
   name: String,
   last_name: String,
@@ -16,6 +14,8 @@ const UserSchema = new mongoose.Schema({
   sign: { type: String, required: true },
   gender: String,
   matches: Array,
+  potentialMatches: Array,
+  rejectedPeople: Array,
 });
 
 const User = mongoose.model("User", UserSchema);
