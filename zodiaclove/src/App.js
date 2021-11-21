@@ -3,13 +3,13 @@ import 'antd/dist/antd.css';
 import MatchCards from "./Components/MatchCard";
 import CompatGrid from './Components/CompatibilityGrid';
 
-import UserData from "./api/UserData";
 import Navbar from "./Components/Navbar";
-import Store from "./Components/store";
 import HoroscopeView from "./Views/horoscopeView";
 import MatchesView from "./Views/matchesView";
-import ProfileView from "./Views/ProfileView";
+import ProfileView from "./Views/profileView";
 import LandingView from "./Views/landingView";
+import StoreView from './Views/storeView';
+import SignUpView from './Views/signUpView';
 
 import { Route, Routes } from "react-router-dom";
 
@@ -29,8 +29,8 @@ function App() {
       <Navbar></Navbar>
       <Routes>
         <Route exact path="/" element={<LandingView />} />
-        <Route path="/users/signup" element={<UserData />} />
-        <Route path="/store" element={<Store />} />
+        <Route path="/users/signup" element={<SignUpView />} />
+        <Route path="/store" element={<StoreView />} />
         <Route path="/horoscope" element={<HoroscopeView sign= {sign}/>} />
         <Route path="/matches" element={<MatchesView > </MatchesView>} />
         <Route path="/profile" element={<ProfileView />} />

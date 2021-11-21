@@ -5,6 +5,7 @@ import React, { Component } from "react";
 
 //import UserData from "./api/UserData";
 import HoroscopeCard from "../Components/HoroscopeCard";
+import CompatGrid from './../Components/CompatibilityGrid';
 
 class HoroscopeView extends Component {
   state = {};
@@ -13,7 +14,10 @@ class HoroscopeView extends Component {
 
   render() {
     return (
+      <div>
       <HoroscopeCard sign = {this.props.sign}></HoroscopeCard>
+      <CompatGrid zSign={this.props.sign}></CompatGrid>
+      </div>
     );
   }
 }

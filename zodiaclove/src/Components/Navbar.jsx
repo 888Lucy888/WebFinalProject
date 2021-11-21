@@ -21,7 +21,7 @@ class Navbar extends Component {
 
   render() {
     return (
-      <Menu onClick={this.handleClick} style={{background:"#171b57"}} mode="horizontal">
+      <Menu onClick={this.handleClick} style={{background:"#1a1e55"}} mode="horizontal">
         <Menu.Item
           key="store"
           icon={<ShoppingOutlined />}
