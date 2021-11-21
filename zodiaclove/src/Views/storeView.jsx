@@ -13,7 +13,8 @@ class StoreView extends Component {
   render() {
     return (
         <div>
-            <h1>storeView</h1>
+            <h1 style={{margin:"25px", color:"#1a1e55"}}>Buy Matches</h1>
+            <Store/>
         </div>
     );
   }

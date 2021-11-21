@@ -53,7 +53,7 @@ class Store extends Component {
               dataIndex: 'buy',
               key: 'buy',
               render: (value, record) => 
-                <Button onClick= {() => this.handlePurchase( record)}> Buy </Button>    
+                <Button style={{backgroundColor:"#1a1e55", color:"#edeaff"}} onClick= {() => this.handlePurchase( record)}> Buy </Button>    
             },
           ];
           this.setState({cols});
@@ -62,7 +62,7 @@ class Store extends Component {
       handlePurchase = (record) =>{
           const key = `open${Date.now()}`;
             const btn = (
-                <Button type="primary" size="small" onClick={() => notification.close(key)}>
+                <Button style={{backgroundColor:"#1a1e55", color:"#edeaff"}} type="primary" size="small" onClick={() => notification.close(key)}>
                 Close
                 </Button>
             );
@@ -77,7 +77,7 @@ class Store extends Component {
 
       render() {
         return (
-            <Table dataSource={dataSource} columns={this.state.cols} style={{padding: "40px"}} pagination= {false}/>
+            <Table dataSource={dataSource} columns={this.state.cols} style={{padding: "40px", backgroundColor:"#394692"}} pagination= {false}/>
           );
       }
   }
