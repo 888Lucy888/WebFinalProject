@@ -112,7 +112,7 @@ class ProfileView extends Component {
                 span: 8,
               }}
             >
-              <Button type="primary" htmlType="submit">
+              <Button type="primary" htmlType="submit" style={{backgroundColor:"#1a1e55", color:"#f0f2ff"}}>
                 Ready
               </Button>
             </Form.Item>
@@ -172,7 +172,7 @@ class ProfileView extends Component {
                   span: 8,
                 }}
               >
-                <Button type="primary" htmlType="submit">
+                <Button type="primary" htmlType="submit" style={{backgroundColor:"#1a1e55", color:"#f0f2ff"}}>
                   Edit
                 </Button>
               </Form.Item>
