@@ -5,6 +5,12 @@ import { Form, Button, Input } from "antd";
 
 import { DatePicker, Radio } from "antd";
 
+const formStyle = {
+  marginRight:"20%",
+  marginLeft:"20%",
+
+}
+
 export default class CreateUser extends Component {
   constructor(props) {
     super(props);
@@ -58,14 +64,8 @@ export default class CreateUser extends Component {
 
   render() {
     return (
-      <div>
-        <Form
-          name="complex-form"
-          onFinish={this.onSubmit}
-          method="POST"
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 12 }}
-        >
+      <div style={formStyle}>
+        <Form name="basic" onFinish={this.onSubmit}>
           <Form.Item label="e-Mail" name="email">
             <Input
               value={this.state.person_email}
@@ -130,7 +130,7 @@ export default class CreateUser extends Component {
           </Form.Item>
 
           <Form.Item>
-            <Button type="submit" htmlType="submit">
+            <Button type="submit" htmlType="submit" style={{backgroundColor:"#853f79", color:"#f0f2ff"}}>
               Submit
             </Button>
           </Form.Item>

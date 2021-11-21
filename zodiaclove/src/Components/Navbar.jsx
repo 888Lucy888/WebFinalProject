@@ -21,50 +21,52 @@ class Navbar extends Component {
 
   render() {
     return (
-      <Menu onClick={this.handleClick} mode="horizontal">
+      <Menu onClick={this.handleClick} style={{background:"#1a1e55"}} mode="horizontal">
         <Menu.Item
           key="store"
           icon={<ShoppingOutlined />}
-          style={{ width: "18%", textAlign: "center", padding: "25px" }}
+          style={{ width: "18%", textAlign: "center", padding: "20px", color:"#f0f2ff" }}
         >
+        <a href="./store" rel="noopener noreferrer">
+            {" "}
+          </a>
           Store
         </Menu.Item>
         <Menu.Item
           key="horoscope"
           icon={<FireOutlined />}
-          style={{ width: "20%", textAlign: "center", padding: "25px" }}
+          style={{ width: "20%", textAlign: "center", padding: "20px", color:"#f0f2ff" }}
         >
-          <a href="../Views/horoscopeView" rel="noopener noreferrer">
+          <a href="../horoscope" rel="noopener noreferrer">
             {" "}
           </a>
-          Your Horoscope
+          Horoscope
         </Menu.Item>
         <Menu.Item
           key="logo"
           disabled
-          style={{ width: "20%", textAlign: "center" }}
+          style={{ width: "20%", textAlign: "center", color:"#f0f2ff", padding:"auto" }}
         >
-          <img src={logo} alt="imagen" style={{ width: "100%" }}></img>
+          <img src={logo} alt="imagen" style={{ width: "50%" }}></img>
         </Menu.Item>
         <Menu.Item
           key="matches"
           icon={<HeartOutlined />}
-          style={{ width: "20%", textAlign: "center", padding: "25px" }}
+          style={{ width: "20%", textAlign: "center", padding: "20px", color:"#f0f2ff"}}
         >
-          Your matches
+            <a href="../matches" rel="noopener noreferrer">
+            {" "}
+          </a>
+          Matches
         </Menu.Item>
         <Menu.Item
           key="profile"
           icon={<UserOutlined />}
-          style={{ width: "20%", textAlign: "center", padding: "25px" }}
+          style={{ width: "20%", textAlign: "end", padding: "20px", color:"#f0f2ff"  }}
         >
-          <a
-            href="https://ant.design"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {" "}
-          </a>
+          <a href="../profile" rel="noopener noreferrer">
+          {" "}
+        </a>
         </Menu.Item>
       </Menu>
     );
