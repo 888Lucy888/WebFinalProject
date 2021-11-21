@@ -93,7 +93,7 @@ class HoroscopeCard extends Component {
                     <Col span={12}>
                         <Card
                             hoverable
-                            style={{ width: "100%" }}
+                            style={{ width: "100%" , backgroundColor:"#f0f2ff"}}
                             cover={<img alt="example" src= {this.state.image} />}
                         > 
                             <Meta title="Sagitaurus" description="Oh Yeah El bicho siuuuu" />
