@@ -16,13 +16,22 @@ class ProfileView extends Component {
     birthdate: null,
     cardNumber: "",
     securityNumber: "",
+    hobbies: "",
+    bio: "",
   };
 
   async componentDidMount() {}
 
   onFinish = (values) => {
     console.log('Success:', values);
-    this.setState({name: values.name, email: values.email, imageLink: values.pictureLink, cardNumber: values.cardNumber, securityNumber: values.securityNumber, edit: false});
+    this.setState({name: values.name, 
+                   email: values.email, 
+                   imageLink: values.pictureLink, 
+                   cardNumber: values.cardNumber, 
+                   securityNumber: values.securityNumber, 
+                   hobbies: values.hobbies,
+                   bio: values.bio,
+                   edit: false});
   };
 
   onFinishFailed = (errorInfo) => {
@@ -34,7 +43,7 @@ class ProfileView extends Component {
    }
 
   render() {
-    let { edit, name, email, imageLink, birthdate, cardNumber, securityNumber } = this.state;
+    let { edit, name, email, imageLink, birthdate, cardNumber, securityNumber, bio, hobbies } = this.state;
     return (
         <div style={{padding: "20px"}}>
         {
@@ -64,6 +73,32 @@ class ProfileView extends Component {
                 },
               ]}
               initialValue= {name}
+            >
+              <Input/>
+            </Form.Item>
+
+            <Form.Item
+              label="Hobbies"
+              name="hobbies"
+              rules={[
+                {
+                  message: 'Please input your hobbies!',
+                },
+              ]}
+              initialValue= {hobbies}
+            >
+              <Input/>
+            </Form.Item>
+
+            <Form.Item
+              label="Bio"
+              name="bio"
+              rules={[
+                {
+                  message: 'Please input your bio!',
+                },
+              ]}
+              initialValue= {bio}
             >
               <Input/>
             </Form.Item>
@@ -178,6 +213,22 @@ class ProfileView extends Component {
                 <Input disabled/>
               </Form.Item>
         
+              <Form.Item
+                label="Bio"
+                name="bio"
+                initialValue= {bio}
+              >
+                <Input disabled/>
+              </Form.Item>
+
+              <Form.Item
+                label="Hobbies"
+                name="hobbies"
+                initialValue= {hobbies}
+              >
+                <Input disabled/>
+              </Form.Item>
+
               <Form.Item
                 label="Email"
                 name="email"

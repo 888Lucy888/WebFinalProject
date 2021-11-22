@@ -22,7 +22,7 @@ function Header() {
 }
 
 function App() {
-  let sign = "sagittarius";
+  let sign = "cancer";
   console.log("sign", sign)
   return (
     <div className="App">
