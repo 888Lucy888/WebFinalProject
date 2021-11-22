@@ -90,10 +90,14 @@ router.post("/signup", function (req, res) {
     gender: gender,
   });
 
-  newUser
-    .save()
-    .then(() => console.log("User added"))
-    .catch((err) => console.error("Error found"));
+  if (UserModel.find({ email: newEmail })) {
+    console.error("User already exists with this email");
+  } else {
+    newUser
+      .save()
+      .then(() => console.log("User added"))
+      .catch((err) => console.error("Error found"));
+  }
 });
 
 router.post("/match", function (req, res) {
