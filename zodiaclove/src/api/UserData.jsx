@@ -64,7 +64,7 @@ export default class CreateUser extends Component {
 
   onChangePersonDate(date, dateString) {
     this.setState({
-      person_bd: new Date(dateString),
+      person_bd: dateString,
     });
   }
 

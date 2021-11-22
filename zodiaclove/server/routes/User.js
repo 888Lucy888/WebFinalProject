@@ -12,8 +12,9 @@ const mailClient = mailer.createTransport({
 let UserModel = require("../database/models/User.model");
 
 function getSign(date) {
-  const month = date.getMonth();
-  const day = date.getDay();
+  var dates = date.split("-");
+  const month = parseInt(dates[1]);
+  const day = parseInt(dates[2]);
 
   if (month === 1) {
     if (day <= 19) return "Capricorn";
@@ -83,6 +84,7 @@ router.post("/signup", function (req, res) {
     password: newPassword,
     email: newEmail,
     hobbies: hobbies,
+    bio: bio,
     birth: birth,
     sign: sign,
     gender: gender,
@@ -90,10 +92,8 @@ router.post("/signup", function (req, res) {
 
   newUser
     .save()
-    .then(() => res.json("User added"))
-    .catch((err) => res.status(400).json("Error " + err));
-
-  res.redirect("/");
+    .then(() => console.log("User added"))
+    .catch((err) => console.error("Error found"));
 });
 
 router.post("/match", function (req, res) {
