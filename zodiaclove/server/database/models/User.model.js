@@ -10,6 +10,7 @@ const UserSchema = new mongoose.Schema({
     unique: true,
   },
   hobbies: String,
+  bio: String,
   birth: { type: Date, required: true },
   sign: { type: String, required: true },
   gender: String,

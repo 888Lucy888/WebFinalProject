@@ -12,8 +12,9 @@ const mailClient = mailer.createTransport({
 let UserModel = require("../database/models/User.model");
 
 function getSign(date) {
-  const month = date.getMonth();
-  const day = date.getDay();
+  var dates = date.split("-");
+  const month = parseInt(dates[1]);
+  const day = parseInt(dates[2]);
 
   if (month === 1) {
     if (day <= 19) return "Capricorn";
@@ -54,13 +55,17 @@ function getSign(date) {
   }
 }
 
-router.route("/").get((req, res) => {
+router.get("/", function (req, res) {
   UserModel.find()
     .then((users) => res.json(users))
     .catch((err) => res.status(400).json("Error" + err));
 });
 
-router.route("/signup").post((req, res) => {
+router.get("/signup", function (req, res) {
+  res.send("Something");
+});
+
+router.post("/signup", function (req, res) {
   console.log("Entered signup post");
 
   const name = req.body.name;
@@ -69,6 +74,7 @@ router.route("/signup").post((req, res) => {
   const newPassword = req.body.password;
   const hobbies = req.body.hobbies;
   const birth = req.body.bd;
+  const bio = req.body.bio;
   const gender = req.body.gender;
   const sign = getSign(birth);
 
@@ -78,18 +84,23 @@ router.route("/signup").post((req, res) => {
     password: newPassword,
     email: newEmail,
     hobbies: hobbies,
+    bio: bio,
     birth: birth,
     sign: sign,
     gender: gender,
   });
 
-  newUser
-    .save()
-    .then(() => res.json("User added"))
-    .catch((err) => res.status(400).json("Error " + err));
+  if (UserModel.find({ email: newEmail })) {
+    console.error("User already exists with this email");
+  } else {
+    newUser
+      .save()
+      .then(() => console.log("User added"))
+      .catch((err) => console.error("Error found"));
+  }
 });
 
-router.route("/match").post((req, res) => {
+router.post("/match", function (req, res) {
   const mail2 = req.params.mailTwo;
 
   var mailto = {
