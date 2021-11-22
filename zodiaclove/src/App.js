@@ -6,7 +6,7 @@ import CompatGrid from './Components/CompatibilityGrid';
 import Navbar from "./Components/Navbar";
 import HoroscopeView from "./Views/horoscopeView";
 import MatchesView from "./Views/matchesView";
-import ProfileView from "./Views/profileView";
+import ProfileView from "./Views/ProfileView";
 import LandingView from "./Views/landingView";
 import StoreView from './Views/storeView';
 import SignUpView from './Views/signUpView';
