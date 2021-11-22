@@ -54,13 +54,17 @@ function getSign(date) {
   }
 }
 
-router.route("/").get((req, res) => {
+router.get("/", function (req, res) {
   UserModel.find()
     .then((users) => res.json(users))
     .catch((err) => res.status(400).json("Error" + err));
 });
 
-router.route("/signup").post((req, res) => {
+router.get("/signup", function (req, res) {
+  res.send("Something");
+});
+
+router.post("/signup", function (req, res) {
   console.log("Entered signup post");
 
   const name = req.body.name;
@@ -69,6 +73,7 @@ router.route("/signup").post((req, res) => {
   const newPassword = req.body.password;
   const hobbies = req.body.hobbies;
   const birth = req.body.bd;
+  const bio = req.body.bio;
   const gender = req.body.gender;
   const sign = getSign(birth);
 
@@ -87,9 +92,11 @@ router.route("/signup").post((req, res) => {
     .save()
     .then(() => res.json("User added"))
     .catch((err) => res.status(400).json("Error " + err));
+
+  res.redirect("/");
 });
 
-router.route("/match").post((req, res) => {
+router.post("/match", function (req, res) {
   const mail2 = req.params.mailTwo;
 
   var mailto = {
