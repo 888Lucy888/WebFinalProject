@@ -14,13 +14,15 @@ class ProfileView extends Component {
     email: "darkside@gmail.com",
     imageLink: "https://hipertextual.com/wp-content/uploads/2020/01/hipertextual-star-wars-deseo-mas-grande-darth-vader-podria-hacerse-realidad-muy-pronto-2020659163.jpg",
     birthdate: null,
+    cardNumber: "",
+    securityNumber: "",
   };
 
   async componentDidMount() {}
 
   onFinish = (values) => {
     console.log('Success:', values);
-    this.setState({name: values.name, email: values.email, imageLink: values.pictureLink, edit: false});
+    this.setState({name: values.name, email: values.email, imageLink: values.pictureLink, cardNumber: values.cardNumber, securityNumber: values.securityNumber, edit: false});
   };
 
   onFinishFailed = (errorInfo) => {
@@ -32,7 +34,7 @@ class ProfileView extends Component {
    }
 
   render() {
-    let { edit, name, email, imageLink, birthdate } = this.state;
+    let { edit, name, email, imageLink, birthdate, cardNumber, securityNumber } = this.state;
     return (
         <div style={{padding: "20px"}}>
         {
@@ -88,6 +90,32 @@ class ProfileView extends Component {
                 },
               ]}
               initialValue= {imageLink}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              label="Credit Card Number"
+              name="cardNumber"
+              rules={[
+                {
+                  message: 'Please input your Credity Card Number!',
+                },
+              ]}
+              initialValue= {cardNumber}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              label="Security Number"
+              name="securityNumber"
+              rules={[
+                {
+                  message: 'Please input your Security Number!',
+                },
+              ]}
+              initialValue= {securityNumber}
             >
               <Input />
             </Form.Item>
