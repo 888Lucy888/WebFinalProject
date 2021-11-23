@@ -153,7 +153,7 @@ class HoroscopeCard extends Component {
         const { love, number, health, color, date, sign, money } = this.state;
         return (
             <div>
-                <Row style={{padding: "50px"}}>
+                <Row >
                     <Col span={6}></Col>
                     <Col span={12}>
                         <Card
@@ -162,51 +162,51 @@ class HoroscopeCard extends Component {
                             cover={<img alt="example" src= {this.state.image} />}
                         > 
                             <Meta title={sign}/>
-                            <Row style={{padding: "5px"}}>
-                                <Col span={6}>
+                            <Row >
+                                <Col span={6} style={{padding: "0px", width: "50%"}}>
                                     <h2> Date: </h2>
                                 </Col>
-                                <Col span={18}>
+                                <Col span={18} style={{padding: "30px", width: "50%"}}>
                                     <p> {date} </p>
                                 </Col>
                             </Row>
-                            <Row style={{padding: "5px"}}>
-                                <Col span={6}>
+                            <Row >
+                                <Col span={6} style={{padding: "0px", width: "50%"}}>
                                     <h2> Love: </h2>
                                 </Col>
-                                <Col span={18}>
+                                <Col span={18} style={{padding: "30px", width: "50%"}}>
                                     <p> {love} </p>
                                 </Col>
                             </Row>
-                            <Row style={{padding: "5px"}}>
-                                <Col span={6}>
+                            <Row >
+                                <Col span={6} style={{padding: "0px", width: "50%"}}>
                                     <h2> Number: </h2>
                                 </Col>
-                                <Col span={18}>
+                                <Col span={18} style={{padding: "30px", width: "50%"}}>
                                     <p> {number} </p>
                                 </Col>
                             </Row>
-                            <Row style={{padding: "5px"}}>
-                                <Col span={6}>
+                            <Row>
+                                <Col span={6} style={{padding: "0px", width: "50%"}}>
                                     <h2> Health: </h2>
                                 </Col>
-                                <Col span={18}>
+                                <Col span={18} style={{padding: "30px", width: "50%"}}>
                                     <p> {health} </p>
                                 </Col>
                             </Row>
-                            <Row style={{padding: "5px"}}>
-                                <Col span={6}>
+                            <Row>
+                                <Col span={6} style={{padding: "0px", width: "50%"}}>
                                     <h2> Color: </h2>
                                 </Col>
-                                <Col span={18}>
+                                <Col span={18} style={{padding: "30px", width: "50%"}}>
                                     <p> {color} </p>
                                 </Col>
                             </Row>
-                            <Row style={{padding: "5px"}}>
-                                <Col span={6}>
+                            <Row >
+                                <Col span={6} style={{padding: "0px", width: "50%"}}>
                                     <h2> Money: </h2>
                                 </Col>
-                                <Col span={18}>
+                                <Col span={18} style={{padding: "30px", width: "50%"}}>
                                     <p> {money} </p>
                                 </Col>
                             </Row>
