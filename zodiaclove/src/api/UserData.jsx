@@ -98,7 +98,13 @@ export default class CreateUser extends Component {
       hobbies: this.state.person_hobbies,
     };
 
-    sender.post("/users/signup", newUser);
+    sender.post("/users/signup", newUser).then((res) => {
+      if(res.data.code === 1){
+        //error
+      }else{
+        //Funcionó
+      }
+    });
 
     this.setState = {
       person_name: "",
