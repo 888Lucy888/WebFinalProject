@@ -12,14 +12,14 @@ class MatchesView extends Component {
         desc:"Hi I'm hot",
         img:"https://i.pinimg.com/originals/28/d3/83/28d3837232911297b40210071de67297.png",
         sign:"Aries",
-        id:"1232"
+        email:"1232"
       },
       {
         name:"Sally",
         desc:"I like painting",
         img:"https://www.imagediamond.com/blog/wp-content/uploads/2020/06/cartoon-girl-dp-images-5.jpg",
         sign:"Libra",
-        id:"23298"
+        email:"23298"
       }
     ]*/
   };
@@ -34,9 +34,9 @@ class MatchesView extends Component {
     //Send email
   }
 
-  remove = (id)=> {
+  remove = (email)=> {
     this.setState({
-      matches: this.state.matches.filter(item => item.id !== id)
+      matches: this.state.matches.filter(item => item.email !== email)
     });
     console.log(this.state.matches);
   }
@@ -44,7 +44,7 @@ class MatchesView extends Component {
   render() {
     let matchData = this.state && this.state.matches.length > 0 ?
             this.state.matches.map(p=>
-                <MatchCard zSign={p.sign} name={p.name} desc={p.desc} img={p.img} match={()=>this.match()} remove={()=>this.remove(p.id)}/>
+                <MatchCard zSign={p.sign} name={p.name} desc={p.desc} img={p.img} match={()=>this.match()} remove={()=>this.remove(p.email)}/>
             ) : <span style={{margin:"3%", color:"aliceblue", fontSize:20}}> Oops! It appears you are out of matches</span>;
 
     return (
