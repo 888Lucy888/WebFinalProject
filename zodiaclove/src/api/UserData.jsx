@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom";
 import swal from "sweetalert";
 import "../Styles/styles.css";
 
-//import { Form, Input, Button, Checkbox } from "antd";
 import { Form, Button, Input } from "antd";
 
 import { DatePicker, Radio } from "antd";
+
 
 import sender from "./fileSender";
 
@@ -102,9 +103,14 @@ export default class CreateUser extends Component {
 
     sender.post("/users/signup", newUser).then((res) => {
       if(res.data.code === 1){
-        swal("Error, el correo ya está en uso.");
+        swal("Error", "El correo introducido ya está en uso.");
       }else{
-        swal("OK");
+        swal("Bienvenido a ZodiacLove","Usuario registrado correctamente")
+        .then(okay => {
+          if (okay) {
+            window.location.href = '/horoscope';
+         }
+        });
       }
     });
   }
