@@ -11,9 +11,17 @@ const mailClient = mailer.createTransport({
   },
 });
 
+router.route("/").get((req, res) => {
+  UserModel.find()
+    .lean()
+    .exec(function (err, users) {
+      return res.end(JSON.stringify(users));
+    });
+});
+
 router.route("/match").post((req, res) => {
-  const mail1 = req.params.mailOne;
-  const mail2 = req.params.mailTwo;
+  const mail1 = req.body.mailOne;
+  const mail2 = req.body.mailTwo;
 
   var mailto = {
     from: process.env.EMAIL,
@@ -88,3 +96,5 @@ router.route("/match").delete((req, res) => {
     { $pull: { potentialMatches: mail1 } }
   );
 });
+
+module.exports = router;
