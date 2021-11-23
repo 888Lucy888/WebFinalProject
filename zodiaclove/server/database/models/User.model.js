@@ -13,6 +13,7 @@ const UserSchema = new mongoose.Schema({
   bio: String,
   birth: { type: Date, required: true },
   sign: { type: String, required: true },
+  img: String,
   gender: String,
   matches: [String],
   potentialMatches: [String],
