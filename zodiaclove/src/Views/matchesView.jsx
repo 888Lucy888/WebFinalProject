@@ -1,10 +1,12 @@
 import 'antd/dist/antd.css';
 import React, { Component } from "react"; 
+import axios from 'axios';
 import MatchCard from './../Components/MatchCard';
 
 class MatchesView extends Component {
   state = {
-    matches:[
+    matches: []
+    /*matches:[
       {
         name:"Joe",
         desc:"Hi I'm hot",
@@ -19,12 +21,14 @@ class MatchesView extends Component {
         sign:"Libra",
         id:"23298"
       }
-    ]
+    ]*/
   };
 
-  async componentDidMount(
-
-  ) {}
+  componentDidMount() {
+    axios.get("/test").then((res) => {
+      this.setState({matches: res.data});
+    })
+  }
 
   match = () =>{
     //Send email
