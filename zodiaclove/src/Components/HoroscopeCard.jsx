@@ -24,12 +24,19 @@ class HoroscopeCard extends Component {
     state = {
         sign: this.props.sign,
         image: "",
-        horoscope: "",
+        horoscope: [],
+        color: "",
+        number: "",
+        love: "",
+        money: "",
+        date: "",
+        health: "",
       };
 
       async componentDidMount(){
           await this.getSignImage();
           await this.getHoroscope();
+          await this.setInformation();
       }
 
       getSignImage = async() => {
@@ -75,17 +82,75 @@ class HoroscopeCard extends Component {
         }
       }
 
+      setInformation = async() => {
+        let { sign, horoscope } = this.state;
+
+
+        let number, love, money, date, health, color, signo; 
+
+          switch(sign){
+            case "sagittarius":
+                signo = "sagitario"
+                break;
+            case "aquarius":
+                signo = "acuario"
+                break;
+            case "aries":
+                signo = "aries"
+                break;
+            case "cancer":
+                signo = "cancer"
+                break;
+            case "capricornus":
+                signo = "capricornio"
+                break;
+            case "scorpius":
+                signo = "escorpio"
+                break;
+            case "gemini":
+                signo = "geminis"
+                break;
+            case "leo":
+                signo = "leo"
+                break;
+            case "libra":
+                signo = "libra"
+                break;
+            case "pisces":
+                signo = "piscis"
+                break;
+            case "taurus":
+                signo = "tauro"
+                break;
+            case "virgo":
+                signo = "virgo"
+                 break;          
+            default:
+                break;
+        }
+
+        number = horoscope[signo].numero;
+        love = horoscope[signo].amor;
+        money = horoscope[signo].dinero;
+        date = horoscope[signo].fechaSigno;
+        health = horoscope[signo].salud;
+        color = horoscope[signo].color;
+    
+        this.setState({number, love, money, date, health, color});
+      }
+
+//Ingles https://horoscopes-and-astrology.com/api
+//Espanol https://api.adderou.cl/tyaas/
       getHoroscope = async () => {
         await axios
         .get("https://api.adderou.cl/tyaas/")
         .then((res) => {
-            //const { results } = res.data;
-            console.log(res.data.horoscopo)
             this.setState({horoscope: res.data.horoscopo})
       });
     }
     
       render() {
+        const { love, number, health, color, date, sign, money } = this.state;
         return (
             <div>
                 <Row style={{padding: "50px"}}>
@@ -96,7 +161,56 @@ class HoroscopeCard extends Component {
                             style={{ width: "100%" , backgroundColor:"#f0f2ff"}}
                             cover={<img alt="example" src= {this.state.image} />}
                         > 
-                            <Meta title="Sagitaurus" description="Oh Yeah El bicho siuuuu" />
+                            <Meta title={sign}/>
+                            <Row style={{padding: "5px"}}>
+                                <Col span={6}>
+                                    <h2> Date: </h2>
+                                </Col>
+                                <Col span={18}>
+                                    <p> {date} </p>
+                                </Col>
+                            </Row>
+                            <Row style={{padding: "5px"}}>
+                                <Col span={6}>
+                                    <h2> Love: </h2>
+                                </Col>
+                                <Col span={18}>
+                                    <p> {love} </p>
+                                </Col>
+                            </Row>
+                            <Row style={{padding: "5px"}}>
+                                <Col span={6}>
+                                    <h2> Number: </h2>
+                                </Col>
+                                <Col span={18}>
+                                    <p> {number} </p>
+                                </Col>
+                            </Row>
+                            <Row style={{padding: "5px"}}>
+                                <Col span={6}>
+                                    <h2> Health: </h2>
+                                </Col>
+                                <Col span={18}>
+                                    <p> {health} </p>
+                                </Col>
+                            </Row>
+                            <Row style={{padding: "5px"}}>
+                                <Col span={6}>
+                                    <h2> Color: </h2>
+                                </Col>
+                                <Col span={18}>
+                                    <p> {color} </p>
+                                </Col>
+                            </Row>
+                            <Row style={{padding: "5px"}}>
+                                <Col span={6}>
+                                    <h2> Money: </h2>
+                                </Col>
+                                <Col span={18}>
+                                    <p> {money} </p>
+                                </Col>
+                            </Row>
+                            
                         </Card>
                     </Col>
                     <Col span={6}></Col>

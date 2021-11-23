@@ -14,13 +14,24 @@ class ProfileView extends Component {
     email: "darkside@gmail.com",
     imageLink: "https://hipertextual.com/wp-content/uploads/2020/01/hipertextual-star-wars-deseo-mas-grande-darth-vader-podria-hacerse-realidad-muy-pronto-2020659163.jpg",
     birthdate: null,
+    cardNumber: "",
+    securityNumber: "",
+    hobbies: "",
+    bio: "",
   };
 
   async componentDidMount() {}
 
   onFinish = (values) => {
     console.log('Success:', values);
-    this.setState({name: values.name, email: values.email, imageLink: values.pictureLink, edit: false});
+    this.setState({name: values.name, 
+                   email: values.email, 
+                   imageLink: values.pictureLink, 
+                   cardNumber: values.cardNumber, 
+                   securityNumber: values.securityNumber, 
+                   hobbies: values.hobbies,
+                   bio: values.bio,
+                   edit: false});
   };
 
   onFinishFailed = (errorInfo) => {
@@ -32,7 +43,7 @@ class ProfileView extends Component {
    }
 
   render() {
-    let { edit, name, email, imageLink, birthdate } = this.state;
+    let { edit, name, email, imageLink, birthdate, cardNumber, securityNumber, bio, hobbies } = this.state;
     return (
         <div style={{padding: "20px"}}>
         {
@@ -65,6 +76,32 @@ class ProfileView extends Component {
             >
               <Input/>
             </Form.Item>
+
+            <Form.Item
+              label="Hobbies"
+              name="hobbies"
+              rules={[
+                {
+                  message: 'Please input your hobbies!',
+                },
+              ]}
+              initialValue= {hobbies}
+            >
+              <Input/>
+            </Form.Item>
+
+            <Form.Item
+              label="Bio"
+              name="bio"
+              rules={[
+                {
+                  message: 'Please input your bio!',
+                },
+              ]}
+              initialValue= {bio}
+            >
+              <Input/>
+            </Form.Item>
       
             <Form.Item
               label="Email"
@@ -88,6 +125,32 @@ class ProfileView extends Component {
                 },
               ]}
               initialValue= {imageLink}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              label="Credit Card Number"
+              name="cardNumber"
+              rules={[
+                {
+                  message: 'Please input your Credity Card Number!',
+                },
+              ]}
+              initialValue= {cardNumber}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              label="Security Number"
+              name="securityNumber"
+              rules={[
+                {
+                  message: 'Please input your Security Number!',
+                },
+              ]}
+              initialValue= {securityNumber}
             >
               <Input />
             </Form.Item>
@@ -150,6 +213,22 @@ class ProfileView extends Component {
                 <Input disabled/>
               </Form.Item>
         
+              <Form.Item
+                label="Bio"
+                name="bio"
+                initialValue= {bio}
+              >
+                <Input disabled/>
+              </Form.Item>
+
+              <Form.Item
+                label="Hobbies"
+                name="hobbies"
+                initialValue= {hobbies}
+              >
+                <Input disabled/>
+              </Form.Item>
+
               <Form.Item
                 label="Email"
                 name="email"

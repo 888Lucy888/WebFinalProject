@@ -5,11 +5,12 @@ import { Form, Button, Input } from "antd";
 
 import { DatePicker, Radio } from "antd";
 
-const formStyle = {
-  marginRight:"20%",
-  marginLeft:"20%",
+import sender from "./fileSender";
 
-}
+const formStyle = {
+  marginRight: "20%",
+  marginLeft: "20%",
+};
 
 export default class CreateUser extends Component {
   constructor(props) {
@@ -19,6 +20,10 @@ export default class CreateUser extends Component {
     this.onChangePersonLastName = this.onChangePersonLastName.bind(this);
     this.onChangePersonPassword = this.onChangePersonPassword.bind(this);
     this.onChangePersonEmail = this.onChangePersonEmail.bind(this);
+    this.onChangePersonDate = this.onChangePersonDate.bind(this);
+    this.onChangePersonGender = this.onChangePersonGender.bind(this);
+    this.onChangePersonBio = this.onChangePersonBio.bind(this);
+    this.onChangePersonHobbies = this.onChangePersonHobbies.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
@@ -26,6 +31,10 @@ export default class CreateUser extends Component {
       person_last_name: "",
       person_email: "",
       person_password: "",
+      person_bd: "",
+      person_gender: "",
+      person_bio: "",
+      person_hobbies: "",
     };
   }
 
@@ -53,7 +62,50 @@ export default class CreateUser extends Component {
     });
   }
 
+  onChangePersonDate(date, dateString) {
+    this.setState({
+      person_bd: dateString,
+    });
+  }
+
+  onChangePersonGender(e) {
+    this.setState({
+      person_gender: e.target.value,
+    });
+  }
+
+  onChangePersonBio(e) {
+    this.setState({
+      person_bio: e.target.value,
+    });
+  }
+
+  onChangePersonHobbies(e) {
+    this.setState({
+      person_hobbies: e.target.value,
+    });
+  }
+
   onSubmit(e) {
+    const newUser = {
+      name: this.state.person_name,
+      last_name: this.state.person_last_name,
+      email: this.state.person_email,
+      password: this.state.person_password,
+      bd: this.state.person_bd,
+      gender: this.state.person_gender,
+      bio: this.state.person_bio,
+      hobbies: this.state.person_hobbies,
+    };
+
+    sender.post("/users/signup", newUser).then((res) => {
+      if(res.data.code === 1){
+        //error
+      }else{
+        //Funcionó
+      }
+    });
+
     this.setState = {
       person_name: "",
       person_last_name: "",
@@ -111,7 +163,11 @@ export default class CreateUser extends Component {
             name="bd"
             rules={[{ required: true }]}
           >
-            <DatePicker />
+            <DatePicker
+              value={this.state.person_bd}
+              onChange={this.onChangePersonDate}
+              rules={[{ required: true }]}
+            />
           </Form.Item>
           <Form.Item name="bio" label="Bio">
             <Input.TextArea showCount maxLength={600} />
@@ -122,7 +178,10 @@ export default class CreateUser extends Component {
           </Form.Item>
 
           <Form.Item name="gender" label="Gender">
-            <Radio.Group>
+            <Radio.Group
+              value={this.state.person_gender}
+              onChange={this.onChangePersonGender}
+            >
               <Radio value="Male">He/him</Radio>
               <Radio value="Female">She/her</Radio>
               <Radio value="Other">Other</Radio>
@@ -130,7 +189,11 @@ export default class CreateUser extends Component {
           </Form.Item>
 
           <Form.Item>
-            <Button type="submit" htmlType="submit" style={{backgroundColor:"#853f79", color:"#f0f2ff"}}>
+            <Button
+              type="submit"
+              htmlType="submit"
+              style={{ backgroundColor: "#853f79", color: "#f0f2ff" }}
+            >
               Submit
             </Button>
           </Form.Item>
