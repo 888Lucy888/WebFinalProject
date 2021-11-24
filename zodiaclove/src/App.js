@@ -1,7 +1,5 @@
 import "./App.css";
 import "antd/dist/antd.css";
-import MatchCards from "./Components/MatchCard";
-import CompatGrid from "./Components/CompatibilityGrid";
 
 import Navbar from "./Components/Navbar";
 import HoroscopeView from "./Views/horoscopeView";
@@ -13,14 +11,6 @@ import SignUpView from "./Views/signUpView";
 import LoginView from "./Views/LoginView";
 
 import { Route, Routes } from "react-router-dom";
-
-function Header() {
-  return (
-    <div>
-      <h1>This is an app</h1>
-    </div>
-  );
-}
 
 function App() {
   let sign = "sagittarius";

@@ -76,6 +76,34 @@ router.post("/login", function (req, res) {
     });
 });
 
+router.post("/update", function (req, res) {
+  const name = req.body.name;
+  const last_name = req.body.last_name;
+  const newEmail = req.body.email;
+  const newPassword = req.body.password;
+  const hobbies = req.body.hobbies;
+  const birth = req.body.bd;
+  const bio = req.body.bio;
+  const gender = req.body.gender;
+  const sign = getSign(birth);
+
+  UserModel.findOneAndUpdate(
+    { email: newEmail },
+    {
+      name: name,
+      last_name: last_name,
+      password: newPassword,
+      hobbies: hobbies,
+      bio: bio,
+      birth: birth,
+      sign: sign,
+      gender: gender,
+    }
+  );
+
+  //Add then catch functions
+});
+
 router.get("/signup", function (req, res) {
   res.send("Something");
 });
