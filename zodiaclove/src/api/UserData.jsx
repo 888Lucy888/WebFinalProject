@@ -87,41 +87,48 @@ export default class CreateUser extends Component {
   }
 
   onSubmit(e) {
+    var self = this;
+
     const newUser = {
-      name: this.state.person_name,
-      last_name: this.state.person_last_name,
-      email: this.state.person_email,
-      password: this.state.person_password,
-      bd: this.state.person_bd,
-      gender: this.state.person_gender,
-      bio: this.state.person_bio,
-      hobbies: this.state.person_hobbies,
+      name: self.state.person_name,
+      last_name: self.state.person_last_name,
+      email: self.state.person_email,
+      password: self.state.person_password,
+      bd: self.state.person_bd,
+      gender: self.state.person_gender,
+      bio: self.state.person_bio,
+      hobbies: self.state.person_hobbies,
     };
 
     sender.post("/users/signup", newUser).then((res) => {
-      if(res.data.code === 1){
+      if (res.data.code === 1) {
         //error
-      }else{
+      } else {
         //Funcionó
       }
     });
 
-    this.setState = {
+    self.setState = {
       person_name: "",
       person_last_name: "",
       person_email: "",
       person_password: "",
+      person_bd: "",
+      person_gender: "",
+      person_bio: "",
+      person_hobbies: "",
     };
   }
 
   render() {
+    const self = this;
     return (
       <div style={formStyle}>
         <Form name="basic" onFinish={this.onSubmit}>
           <Form.Item label="e-Mail" name="email">
             <Input
-              value={this.state.person_email}
-              onChange={this.onChangePersonEmail}
+              value={self.state.person_email}
+              onChange={self.onChangePersonEmail}
               rules={[{ required: true }]}
             />
           </Form.Item>
@@ -133,8 +140,8 @@ export default class CreateUser extends Component {
             <Input.Group>
               <Form.Item name="fname">
                 <Input
-                  value={this.state.person_name}
-                  onChange={this.onChangePersonName}
+                  value={self.state.person_name}
+                  onChange={self.onChangePersonName}
                   style={{ width: "calc(50% - 8px)" }}
                   placeholder="First Name"
                   rules={[{ required: true }]}
@@ -142,8 +149,8 @@ export default class CreateUser extends Component {
               </Form.Item>
               <Form.Item name="lname">
                 <Input
-                  value={this.state.person_last_name}
-                  onChange={this.onChangePersonLastName}
+                  value={self.state.person_last_name}
+                  onChange={self.onChangePersonLastName}
                   style={{ width: "calc(50% - 8px)" }}
                   rules={[{ required: true }]}
                   placeholder="Last Name"
@@ -153,8 +160,8 @@ export default class CreateUser extends Component {
           </Form.Item>
           <Form.Item label="Password" name="password">
             <Input.Password
-              value={this.state.person_password}
-              onChange={this.onChangePersonPassword}
+              value={self.state.person_password}
+              onChange={self.onChangePersonPassword}
               rules={[{ required: true }]}
             />
           </Form.Item>
@@ -164,8 +171,8 @@ export default class CreateUser extends Component {
             rules={[{ required: true }]}
           >
             <DatePicker
-              value={this.state.person_bd}
-              onChange={this.onChangePersonDate}
+              value={self.state.person_bd}
+              onChange={self.onChangePersonDate}
               rules={[{ required: true }]}
             />
           </Form.Item>
@@ -179,8 +186,8 @@ export default class CreateUser extends Component {
 
           <Form.Item name="gender" label="Gender">
             <Radio.Group
-              value={this.state.person_gender}
-              onChange={this.onChangePersonGender}
+              value={self.state.person_gender}
+              onChange={self.onChangePersonGender}
             >
               <Radio value="Male">He/him</Radio>
               <Radio value="Female">She/her</Radio>

@@ -10,6 +10,7 @@ import ProfileView from "./Views/ProfileView";
 import LandingView from "./Views/landingView";
 import StoreView from "./Views/storeView";
 import SignUpView from "./Views/signUpView";
+import LoginView from "./Views/LoginView";
 
 import { Route, Routes } from "react-router-dom";
 
@@ -33,6 +34,7 @@ function App() {
         <Route path="/store" element={<StoreView />} />
         <Route path="/horoscope" element={<HoroscopeView sign={sign} />} />
         <Route path="/matches" element={<MatchesView> </MatchesView>} />
+        <Route path="/login" element={<LoginView />} />;
         <Route path="/profile" element={<ProfileView />} />
       </Routes>
     </div>

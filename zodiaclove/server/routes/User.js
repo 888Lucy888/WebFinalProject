@@ -61,6 +61,21 @@ router.get("/", function (req, res) {
     .catch((err) => res.status(400).json("Error" + err));
 });
 
+router.post("/login", function (req, res) {
+  console.log(req.body.email);
+  console.log(req.body.password);
+
+  const email = req.body.email;
+  const pass = req.body.password;
+
+  UserModel.findOne({ email: email, password: pass })
+    .lean()
+    .exec(function (err, users) {
+      console.log(JSON.stringify(users));
+      return res.end(JSON.stringify(users));
+    });
+});
+
 router.get("/signup", function (req, res) {
   res.send("Something");
 });
@@ -92,15 +107,15 @@ router.post("/signup", function (req, res) {
 
   if (UserModel.find({ email: newEmail })) {
     console.error("User already exists with this email");
-    res.json({code: 1, message: "User already exists with this email"});
+    res.json({ code: 1, message: "User already exists with this email" });
   } else {
     newUser
       .save()
       .then(() => {
         console.log("User added");
-        res.json({code: 0, message: "User added"});
+        res.json({ code: 0, message: "User added" });
       })
-      .catch((err) => res.json({code: 0, message: err.message}));
+      .catch((err) => res.json({ code: 0, message: err.message }));
   }
 });
 

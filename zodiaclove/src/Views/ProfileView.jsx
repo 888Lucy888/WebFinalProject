@@ -1,54 +1,58 @@
 //import "./App.css";
-import 'antd/dist/antd.css';
+import "antd/dist/antd.css";
 
-import React, { Component, useEffect } from "react"; 
-import { Form, Input, Button, DatePicker, Col, Row, Image, Card } from 'antd';
-
-//import UserData from "./api/UserData";
-import ProfileCards from "../Components/ProfileCards";
+import React, { Component } from "react";
+import { Form, Input, Button, DatePicker, Col, Row, Image, Card } from "antd";
 
 class ProfileView extends Component {
   state = {
-    edit: false,
-    name: "Vader",
-    email: "darkside@gmail.com",
-    imageLink: "https://hipertextual.com/wp-content/uploads/2020/01/hipertextual-star-wars-deseo-mas-grande-darth-vader-podria-hacerse-realidad-muy-pronto-2020659163.jpg",
-    birthdate: null,
-    cardNumber: "",
-    securityNumber: "",
+    name: "",
+    email: "",
+    imageLink: "",
+    birthdate: "",
     hobbies: "",
+    password: "",
     bio: "",
   };
 
-  async componentDidMount() {}
+  componentDidMount() {}
 
   onFinish = (values) => {
-    console.log('Success:', values);
-    this.setState({name: values.name, 
-                   email: values.email, 
-                   imageLink: values.pictureLink, 
-                   cardNumber: values.cardNumber, 
-                   securityNumber: values.securityNumber, 
-                   hobbies: values.hobbies,
-                   bio: values.bio,
-                   edit: false});
+    console.log("Success:", values);
+    this.setState({
+      name: values.name,
+      email: values.email,
+      imageLink: values.pictureLink,
+      cardNumber: values.cardNumber,
+      securityNumber: values.securityNumber,
+      hobbies: values.hobbies,
+      bio: values.bio,
+    });
   };
 
   onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+    console.log("Failed:", errorInfo);
   };
 
   async onChange(value, dateString) {
-    await this.setState({birthdate: value});
-   }
+    await this.setState({ birthdate: value });
+  }
 
   render() {
-    let { edit, name, email, imageLink, birthdate, cardNumber, securityNumber, bio, hobbies } = this.state;
+    let {
+      edit,
+      name,
+      email,
+      imageLink,
+      birthdate,
+      cardNumber,
+      securityNumber,
+      bio,
+      hobbies,
+    } = this.state;
     return (
-        <div style={{padding: "20px"}}>
-        {
-          edit === true 
-          ? 
+      <div style={{ padding: "20px" }}>
+        {edit === true ? (
           <Form
             name="basic"
             labelCol={{
@@ -69,12 +73,12 @@ class ProfileView extends Component {
               name="name"
               rules={[
                 {
-                  message: 'Please input your name!',
+                  message: "Please input your name!",
                 },
               ]}
-              initialValue= {name}
+              initialValue={name}
             >
-              <Input/>
+              <Input />
             </Form.Item>
 
             <Form.Item
@@ -82,12 +86,12 @@ class ProfileView extends Component {
               name="hobbies"
               rules={[
                 {
-                  message: 'Please input your hobbies!',
+                  message: "Please input your hobbies!",
                 },
               ]}
-              initialValue= {hobbies}
+              initialValue={hobbies}
             >
-              <Input/>
+              <Input />
             </Form.Item>
 
             <Form.Item
@@ -95,25 +99,25 @@ class ProfileView extends Component {
               name="bio"
               rules={[
                 {
-                  message: 'Please input your bio!',
+                  message: "Please input your bio!",
                 },
               ]}
-              initialValue= {bio}
+              initialValue={bio}
             >
-              <Input/>
+              <Input />
             </Form.Item>
-      
+
             <Form.Item
               label="Email"
               name="email"
               rules={[
                 {
-                  message: 'Please input your email!',
+                  message: "Please input your email!",
                 },
               ]}
-              initialValue= {email}
+              initialValue={email}
             >
-              <Input/>
+              <Input />
             </Form.Item>
 
             <Form.Item
@@ -121,10 +125,10 @@ class ProfileView extends Component {
               name="pictureLink"
               rules={[
                 {
-                  message: 'Please input your Profile Picture Link!',
+                  message: "Please input your Profile Picture Link!",
                 },
               ]}
-              initialValue= {imageLink}
+              initialValue={imageLink}
             >
               <Input />
             </Form.Item>
@@ -134,10 +138,10 @@ class ProfileView extends Component {
               name="cardNumber"
               rules={[
                 {
-                  message: 'Please input your Credity Card Number!',
+                  message: "Please input your Credity Card Number!",
                 },
               ]}
-              initialValue= {cardNumber}
+              initialValue={cardNumber}
             >
               <Input />
             </Form.Item>
@@ -147,10 +151,10 @@ class ProfileView extends Component {
               name="securityNumber"
               rules={[
                 {
-                  message: 'Please input your Security Number!',
+                  message: "Please input your Security Number!",
                 },
               ]}
-              initialValue= {securityNumber}
+              initialValue={securityNumber}
             >
               <Input />
             </Form.Item>
@@ -161,107 +165,113 @@ class ProfileView extends Component {
               rules={[
                 {
                   type: "object",
-                  message: 'Please input your Birthdate!',
+                  message: "Please input your Birthdate!",
                 },
               ]}
-              initialValue= {birthdate}
+              initialValue={birthdate}
             >
-            <DatePicker style={{ width: '70%' }} format='DD/MM/YYYY' onChange={(value, dateString) => this.onChange(value, dateString)}/>
+              <DatePicker
+                style={{ width: "70%" }}
+                format="DD/MM/YYYY"
+                onChange={(value, dateString) =>
+                  this.onChange(value, dateString)
+                }
+              />
             </Form.Item>
-      
+
             <Form.Item
               wrapperCol={{
                 offset: 8,
                 span: 8,
               }}
             >
-              <Button type="primary" htmlType="submit" style={{backgroundColor:"#1a1e55", color:"#f0f2ff"}}>
+              <Button
+                type="primary"
+                htmlType="submit"
+                style={{ backgroundColor: "#1a1e55", color: "#f0f2ff" }}
+              >
                 Ready
               </Button>
             </Form.Item>
           </Form>
-          : 
+        ) : (
           <Card>
-          <Row >
-              <Col span={2}>
-              </Col>
+            <Row>
+              <Col span={2}></Col>
               <Col span={10}>
                 <Image src={imageLink}></Image>
               </Col>
-              <Col span={2}>
-              </Col>
-              <Col span={8} >
-              <Form
-              name="basic"
-              labelCol={{
-                span: 0,
-              }}
-              wrapperCol={{
-                span: 0,
-              }}
-              initialValues={{
-                remember: true,
-              }}
-              onFinish={() => this.setState({edit: true})}
-              autoComplete="off"
-            >
-              <Form.Item
-                label="Name"
-                name="name"
-                initialValue= {name}
-              >
-                <Input disabled/>
-              </Form.Item>
-        
-              <Form.Item
-                label="Bio"
-                name="bio"
-                initialValue= {bio}
-              >
-                <Input disabled/>
-              </Form.Item>
+              <Col span={2}></Col>
+              <Col span={8}>
+                <Form
+                  name="basic"
+                  labelCol={{
+                    span: 0,
+                  }}
+                  wrapperCol={{
+                    span: 0,
+                  }}
+                  initialValues={{
+                    remember: true,
+                  }}
+                  onFinish={() => this.setState({ edit: true })}
+                  autoComplete="off"
+                >
+                  <Form.Item label="Name" name="name" initialValue={name}>
+                    <Input disabled />
+                  </Form.Item>
 
-              <Form.Item
-                label="Hobbies"
-                name="hobbies"
-                initialValue= {hobbies}
-              >
-                <Input disabled/>
-              </Form.Item>
+                  <Form.Item label="Bio" name="bio" initialValue={bio}>
+                    <Input disabled />
+                  </Form.Item>
 
-              <Form.Item
-                label="Email"
-                name="email"
-                initialValue= {email}
-              >
-                <Input disabled/>
-              </Form.Item>
-  
-              <Form.Item
-                label="Birthdate"
-                name="birthdate"
-                initialValue= {birthdate}
-              >
-              <DatePicker style={{ width: '70%' }} format='DD/MM/YYYY' onChange={(value, dateString) => this.onChange(value, dateString)} disabled/>
-              </Form.Item>
-        
-              <Form.Item
-                wrapperCol={{
-                  offset: 8,
-                  span: 8,
-                }}
-              >
-                <Button type="primary" htmlType="submit" style={{backgroundColor:"#1a1e55", color:"#f0f2ff"}}>
-                  Edit
-                </Button>
-              </Form.Item>
-            </Form>
+                  <Form.Item
+                    label="Hobbies"
+                    name="hobbies"
+                    initialValue={hobbies}
+                  >
+                    <Input disabled />
+                  </Form.Item>
+
+                  <Form.Item label="Email" name="email" initialValue={email}>
+                    <Input disabled />
+                  </Form.Item>
+
+                  <Form.Item
+                    label="Birthdate"
+                    name="birthdate"
+                    initialValue={birthdate}
+                  >
+                    <DatePicker
+                      style={{ width: "70%" }}
+                      format="DD/MM/YYYY"
+                      onChange={(value, dateString) =>
+                        this.onChange(value, dateString)
+                      }
+                      disabled
+                    />
+                  </Form.Item>
+
+                  <Form.Item
+                    wrapperCol={{
+                      offset: 8,
+                      span: 8,
+                    }}
+                  >
+                    <Button
+                      type="primary"
+                      htmlType="submit"
+                      style={{ backgroundColor: "#1a1e55", color: "#f0f2ff" }}
+                    >
+                      Edit
+                    </Button>
+                  </Form.Item>
+                </Form>
               </Col>
-          </Row>
+            </Row>
           </Card>
-        }
-        
-        </div>
+        )}
+      </div>
     );
   }
 }
