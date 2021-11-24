@@ -1,9 +1,10 @@
 import "antd/dist/antd.css";
-
 import React, { Component } from "react";
 import { Form, Input, Button } from "antd";
-
+import swal from "sweetalert";
+import { useParams } from 'react-router-dom';
 import sender from "../api/fileSender";
+import { Link } from 'react-router-dom';
 
 class LoginView extends Component {
   state = {
@@ -26,9 +27,17 @@ class LoginView extends Component {
 
     sender.post("/users/login", searchable).then((res) => {
       if (res.data) {
-        //Add redirect here
+        swal(
+          "Bienvenido a ZodiacLove",
+          "Usuario Correcto",
+          "success",
+        ).then((okay) => {
+          if (okay) {
+            window.location.href = "/horoscope";
+          }
+        });
       } else {
-        //show error message here
+        swal("Oops!", "Correo o Contraseña Incorrecta", "error");
       }
     });
   };

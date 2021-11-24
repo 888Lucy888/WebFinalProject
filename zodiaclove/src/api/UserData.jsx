@@ -26,6 +26,7 @@ export default class CreateUser extends Component {
     this.onChangePersonGender = this.onChangePersonGender.bind(this);
     this.onChangePersonBio = this.onChangePersonBio.bind(this);
     this.onChangePersonHobbies = this.onChangePersonHobbies.bind(this);
+    this.onChangeImageURL = this.onChangeImageURL.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
@@ -37,6 +38,7 @@ export default class CreateUser extends Component {
       person_gender: "",
       person_bio: "",
       person_hobbies: "",
+      person_img: "",
     };
   }
 
@@ -49,6 +51,12 @@ export default class CreateUser extends Component {
   onChangePersonLastName(e) {
     this.setState({
       person_last_name: e.target.value,
+    });
+  }
+
+  onChangeImageURL(e) {
+    this.setState({
+      person_img: e.target.value,
     });
   }
 
@@ -100,15 +108,17 @@ export default class CreateUser extends Component {
       gender: self.state.person_gender,
       bio: self.state.person_bio,
       hobbies: self.state.person_hobbies,
+      img: self.state.img,
     };
 
     sender.post("/users/signup", newUser).then((res) => {
       if (res.data.code === 1) {
-        swal("Error", "El correo introducido ya está en uso.");
+        swal("Error", "El correo introducido ya está en uso.", "error");
       } else {
         swal(
           "Bienvenido a ZodiacLove",
-          "Usuario registrado correctamente"
+          "Usuario registrado correctamente",
+          "success",
         ).then((okay) => {
           if (okay) {
             window.location.href = "/horoscope";
@@ -174,11 +184,18 @@ export default class CreateUser extends Component {
               rules={[{ required: true }]}
             />
           </Form.Item>
-          <Form.Item name="bio" label="Bio">
+          <Form.Item name="Bio" label="Bio">
             <Input.TextArea showCount maxLength={600} />
           </Form.Item>
 
-          <Form.Item name="hobbies" label="Hobbies">
+          <Form.Item name="Image URL" label="Image URL" rules={[{required:true}]}>
+            <Input
+              value={this.state.person_img}
+              onChange={this.onChangeImageURL}
+            />
+          </Form.Item>
+
+          <Form.Item name="Hobbies" label="Hobbies">
             <Input.TextArea showCount maxLength={600} />
           </Form.Item>
 

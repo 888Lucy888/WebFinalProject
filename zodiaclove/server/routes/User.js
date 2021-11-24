@@ -91,6 +91,7 @@ router.post("/signup", function (req, res) {
   const birth = req.body.bd;
   const bio = req.body.bio;
   const gender = req.body.gender;
+  const img = req.body.img;
   const sign = getSign(birth);
 
   const newUser = new UserModel({
@@ -103,6 +104,7 @@ router.post("/signup", function (req, res) {
     birth: birth,
     sign: sign,
     gender: gender,
+    img: img,
   });
 
   UserModel.find({ email: newEmail }, function (err, docs) {
