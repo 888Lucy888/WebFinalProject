@@ -10,3 +10,7 @@
   --test: #853f79b;
   --t: #d2dbff;
 }
+
+.swal-button {
+  background-color: #1a1e55;
+}

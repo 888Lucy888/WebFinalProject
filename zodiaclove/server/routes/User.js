@@ -105,18 +105,20 @@ router.post("/signup", function (req, res) {
     gender: gender,
   });
 
-  if (UserModel.find({ email: newEmail })) {
-    console.error("User already exists with this email");
-    res.json({ code: 1, message: "User already exists with this email" });
-  } else {
-    newUser
-      .save()
-      .then(() => {
-        console.log("User added");
-        res.json({ code: 0, message: "User added" });
-      })
-      .catch((err) => res.json({ code: 0, message: err.message }));
-  }
+  UserModel.find({ email: newEmail }, function (err, docs) {
+    if (err) {
+      console.error("User already exists with this email");
+      res.json({ code: 1, message: "User already exists with this email" });
+    } else {
+      newUser
+        .save()
+        .then(() => {
+          console.log("User added");
+          res.json({ code: 0, message: "User added" });
+        })
+        .catch((err) => res.json({ code: 1, message: err.message }));
+    }
+  });
 });
 
 router.post("/match", function (req, res) {

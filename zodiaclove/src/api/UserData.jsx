@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import swal from "sweetalert";
+import "../Styles/styles.css";
 
-//import { Form, Input, Button, Checkbox } from "antd";
 import { Form, Button, Input } from "antd";
 
 import { DatePicker, Radio } from "antd";
@@ -102,22 +104,18 @@ export default class CreateUser extends Component {
 
     sender.post("/users/signup", newUser).then((res) => {
       if (res.data.code === 1) {
-        //error
+        swal("Error", "El correo introducido ya está en uso.");
       } else {
-        //Funcionó
+        swal(
+          "Bienvenido a ZodiacLove",
+          "Usuario registrado correctamente"
+        ).then((okay) => {
+          if (okay) {
+            window.location.href = "/horoscope";
+          }
+        });
       }
     });
-
-    self.setState = {
-      person_name: "",
-      person_last_name: "",
-      person_email: "",
-      person_password: "",
-      person_bd: "",
-      person_gender: "",
-      person_bio: "",
-      person_hobbies: "",
-    };
   }
 
   render() {
@@ -125,49 +123,49 @@ export default class CreateUser extends Component {
     return (
       <div style={formStyle}>
         <Form name="basic" onFinish={this.onSubmit}>
-          <Form.Item label="e-Mail" name="email">
+          <Form.Item label="e-Mail" name="Email" rules={[{ required: true }]}>
             <Input
-              value={self.state.person_email}
-              onChange={self.onChangePersonEmail}
-              rules={[{ required: true }]}
+              value={this.state.person_email}
+              onChange={this.onChangePersonEmail}
             />
           </Form.Item>
           <Form.Item
             label="Your Name"
-            name="name"
+            name="Name"
             style={{ marginBottom: 0, display: "flex", flexDirection: "row" }}
           >
             <Input.Group>
-              <Form.Item name="fname">
+              <Form.Item name="First Name" rules={[{ required: true }]}>
                 <Input
                   value={self.state.person_name}
                   onChange={self.onChangePersonName}
                   style={{ width: "calc(50% - 8px)" }}
                   placeholder="First Name"
-                  rules={[{ required: true }]}
                 />
               </Form.Item>
-              <Form.Item name="lname">
+              <Form.Item name="Last Name" rules={[{ required: true }]}>
                 <Input
                   value={self.state.person_last_name}
                   onChange={self.onChangePersonLastName}
                   style={{ width: "calc(50% - 8px)" }}
-                  rules={[{ required: true }]}
                   placeholder="Last Name"
                 />
               </Form.Item>
             </Input.Group>
           </Form.Item>
-          <Form.Item label="Password" name="password">
+          <Form.Item
+            label="Password"
+            name="Password"
+            rules={[{ required: true }]}
+          >
             <Input.Password
-              value={self.state.person_password}
-              onChange={self.onChangePersonPassword}
-              rules={[{ required: true }]}
+              value={this.state.person_password}
+              onChange={this.onChangePersonPassword}
             />
           </Form.Item>
           <Form.Item
             label="Date of Birth"
-            name="bd"
+            name="Birth Date"
             rules={[{ required: true }]}
           >
             <DatePicker
@@ -199,7 +197,7 @@ export default class CreateUser extends Component {
             <Button
               type="submit"
               htmlType="submit"
-              style={{ backgroundColor: "#853f79", color: "#f0f2ff" }}
+              style={{ backgroundColor: "#1a1e55", color: "#f0f2ff" }}
             >
               Submit
             </Button>
